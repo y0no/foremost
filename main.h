@@ -258,6 +258,7 @@ char *__progname;
 #define XLSX 30
 #define PPTX 31
 #define MP4 32
+#define SQLITE 33
 
 
 #define KILOBYTE                  1024

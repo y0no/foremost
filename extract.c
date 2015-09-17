@@ -2548,6 +2548,10 @@ unsigned char *extract_file(f_state *s, u_int64_t c_offset, unsigned char *found
 		{
 		return extract_generic(s, c_offset, foundat, buflen, needle, f_offset);
 		}
+	else if (needle->type == SQLITE)
+		{
+		return extract_generic(s, c_offset, foundat, buflen, needle, f_offset);
+		}
 	else
 		{
 		return NULL;

@@ -289,6 +289,7 @@ void init_all(f_state *state)
 	init_builtin(state, MP4, "mp4", "\x00\x00\x00\x1c\x66\x74\x79\x70", NULL, 8, 0, 600 * MEGABYTE, TRUE);
 	init_builtin(state, RIFF, "rif", "RIFF", "INFO", 4, 4, 20 * MEGABYTE, TRUE);
 	init_builtin(state, HTM, "htm", "<html", "</html>", 5, 7, MEGABYTE, FALSE);
+	init_builtin(state, SQLITE, "sqlite", "\x53\x51\x4c\x69\x74\x65\x20\x66\x6f\x72\x6d\x61\x74\x20\x33\x00", NULL, 16, 0, 600 * MEGABYTE, TRUE);
 	init_builtin(state,
 				 OLE,
 				 "ole",
@@ -727,6 +728,20 @@ int set_search_def(f_state *s, char *ft, u_int64_t max_file_size)
 							 4,
 							 max_file_size,
 							 TRUE);
+		}
+	else if (strcmp(ft, "sqlite") == 0)
+		{
+		if (max_file_size == 0)
+			max_file_size = 600 * MEGABYTE;
+		index = init_builtin(s, 
+					 		SQLITE, 
+					 		"sqlite", 
+					 		"\x53\x51\x4c\x69\x74\x65\x20\x66\x6f\x72\x6d\x61\x74\x20\x33\x00", 
+					 		NULL, 
+					 		16, 
+					 		0, 
+					 		max_file_size, 
+					 		TRUE);
 		}
 	else if (strcmp(ft, "all") == 0)
 		{
